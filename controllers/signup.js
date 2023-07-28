@@ -17,7 +17,7 @@ module.exports = {
         }
 
         // Check Data.
-        let dt = await db.signup.findOne({
+        let userData = await db.users.findOne({
             where : {
                 [db.Sequelize.Op.or]: [
                     { email:  data.email},
@@ -26,13 +26,13 @@ module.exports = {
             }
         });
 
-        if(dt){
+        if(userData){
             // Data Found.
             res.status(200).json({status : false, msg : "Email or username already exist."});
             return;
         } else {
             // New record create.
-            await db.signup.create(data);
+            await db.users.create(data);
         }
 
         res.status(201).json({status : true, msg : "Sign-up successfully."});

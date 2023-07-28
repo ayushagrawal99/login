@@ -25,5 +25,16 @@ const schemas = {
             .max(10)
             .required(),
     }),
+    logInSchema: Joi.object().keys({
+        username : Joi.string()
+            .regex(new RegExp(/^[a-zA-Z0-9\d\-_\s\)\(\@]+$/i))
+            .messages({ "string.pattern.base": "username has invalid characters" })
+            .required(),
+        password : Joi.string()
+            .messages({ "string.pattern.base": "password has invalid characters" })
+            .min(5)
+            .max(10)
+            .required(),
+    }),
 };
 module.exports = schemas;

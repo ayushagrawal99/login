@@ -28,7 +28,7 @@ const db = {};
 db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 
-db.signup = require('./signup.js')(sequelize, DataTypes);
+db.users = require('./users.js')(sequelize, DataTypes);
 
 // We don't want to loose the data when server start.
 db.sequelize.sync({ force : false })
