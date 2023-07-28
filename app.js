@@ -2,12 +2,14 @@ const express = require('express');
 const app = express();
 const {port} = require('./config/config');
 
-app.use('/',require('./routes/login'));
 app.use(express.json());
 app.use(express.urlencoded({ extended : true}));
 
+app.use('/',require('./routes/index.js'));
+
+// unknown route error.
 app.use(function (req, res, next) {
-    var err = new Error('Not Found');
+    var err = new Error('Route Not Found');
     err.status = 404;
     next(err);
 });
