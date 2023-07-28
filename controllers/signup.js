@@ -1,7 +1,11 @@
 const db = require('../models/index');
+const bcrypt = require('bcryptjs');
 
 module.exports = {
     signUp: async (req,res) => {
+        // Password encryption.
+        const salt = await bcrypt.genSalt(10);
+        const securePassword = await bcrypt.hash(req.body.password, salt);
 
         // Data preparation.
         let data = {
@@ -9,7 +13,7 @@ module.exports = {
             last_name : req.body.last_name,
             username : req.body.username,
             email : req.body.email,
-            password : req.body.password,
+            password : securePassword,
         }
 
         // Check Data.
