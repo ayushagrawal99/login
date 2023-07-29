@@ -4,6 +4,7 @@ const middleware = (schema) => {
             ...req.body
         };
 
+        // Validate the schema.
         const { error } = schema.validate(data);
         const valid = error == null;
 
@@ -13,10 +14,8 @@ const middleware = (schema) => {
             const { details } = error;
             const message = details.map((i) => i.message).join(",");
      
-            console.log("Error in validation middleware");
             console.error(error);
-
-            res.json({status : false, msg : message})
+            res.status(403).json({status : false, msg : message})
         }
     };
 };
