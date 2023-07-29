@@ -14,6 +14,11 @@ app.use(function (req, res, next) {
     next(err);
 });
 
+// Error Handling
+app.use(function (err, req, res, next) {
+    res.status(err.status || 500).json({message: 'something went wrong'});
+});
+
 // Server 
 app.listen(port, function(err){
     if(err){

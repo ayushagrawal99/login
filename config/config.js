@@ -4,6 +4,7 @@ var config = {
     development: {
         env: env,
         port: process.env.PORT || 3000,
+        secretKey : 'ihujh7*^$%@*hhfhg',
         database: {
             username: "root",
             password: "Ayush@12345",
