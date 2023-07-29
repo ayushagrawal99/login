@@ -14,19 +14,12 @@ router.post(
     signUp.signUp
 );
 
-// // Log-in route
-// router.post(
-//     '/log-in',
-//     validationMiddleware(logInSchema),
-//     logIn.logIn
-// );
-
-// // All users route
-// router.get(
-//     '/all-users',
-//     tokenVerification(),
-//     userData.userData
-// );
+// Log-in route
+router.post(
+    '/log-in',
+    validationMiddleware(logInSchema),
+    logIn.logIn
+);
 
 // All users route
 router.get(
